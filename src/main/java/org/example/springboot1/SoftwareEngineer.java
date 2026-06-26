@@ -1,18 +1,26 @@
 package org.example.springboot1;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.Objects;
 
-public class SoftwareEngineering {
+@Entity
+public class SoftwareEngineer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String techStack;
-    public SoftwareEngineering(){
+    public SoftwareEngineer(){
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        SoftwareEngineering that = (SoftwareEngineering) o;
+        SoftwareEngineer that = (SoftwareEngineer) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(techStack, that.techStack);
     }
 
@@ -21,7 +29,7 @@ public class SoftwareEngineering {
         return Objects.hash(id, name, techStack);
     }
 
-    public SoftwareEngineering(Integer id, String techStack, String name) {
+    public SoftwareEngineer(Integer id, String techStack, String name) {
         this.id = id;
         this.techStack = techStack;
         this.name = name;
